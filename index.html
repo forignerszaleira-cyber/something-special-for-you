@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>25 September — Our Little Story 💗</title>
+
+<style>
+*{
+ box-sizing:border-box;
+ -webkit-tap-highlight-color:transparent
+}
+
+html,body{
+ margin:0;
+ width:100%;
+ height:100%;
+ overflow:hidden;
+ font-family:Arial,sans-serif;
+ color:white
+}
+
+body{
+ background:#100510
+}
+
+#app{
+ position:fixed;
+ inset:0;
+ width:100vw;
+ height:100dvh;
+ overflow:hidden;
+ background:
+ radial-gradient(circle at 50% 20%,#661c4b 0%,#310d2c 42%,#0b040b 100%)
+}
+
+.scene{
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ padding:25px 18px 100px;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ text-align:center;
+ overflow:hidden
+}
+
+.scene.active{
+ display:flex
+}
+
+.card{
+ width:min(92vw,720px);
+ max-height:calc(100dvh - 145px);
+ overflow:hidden;
+ padding:25px;
+ border-radius:28px;
+ background:rgba(255,255,255,.07);
+ border:1px solid rgba(255,190,220,.25);
+ box-shadow:0 20px 70px #0008
+}
+
+h1{
+ font-size:clamp(40px,10vw,72px);
+ line-height:1.08;
+ margin:18px 0;
+ color:#ffd8e7
+}
+
+h2{
+ font-size:clamp(27px,7vw,43px);
+ line-height:1.15;
+ margin:8px 0 18px;
+ color:#ffd3e4
+}
+
+h3{
+ color:#ffb3ce;
+ font-size:clamp(20px,5vw,30px);
+ margin:10px 0 15px
+}
+
+p{
+ font-size:clamp(14px,3.8vw,19px);
+ line-height:1.55;
+ margin:10px 0
+}
+
+strong{
+ color:#ffb8d0
+}
+
+.date{
+ display:inline-block;
+ padding:9px 18px;
+ border-radius:30px;
+ background:#ffd8e8;
+ color:#9d4664;
+ font-weight:bold
+}
+
+.btn{
+ position:absolute;
+ bottom:23px;
+ left:50%;
+ transform:translateX(-50%);
+ width:min(88vw,600px);
+ min-height:62px;
+ border:0;
+ border-radius:40px;
+ background:linear-gradient(90deg,#ff2990,#a83cff);
+ color:white;
+ font-size:clamp(17px,4.5vw,23px);
+ font-weight:900;
+ box-shadow:0 10px 35px #ff299055;
+ z-index:20
+}
+
+.btn:active{
+ transform:translateX(-50%) scale(.96)
+}
+
+
+/* ================= HADIAH ================= */
+
+.gift{
+ font-size:105px;
+ animation:bounce 1.4s infinite;
+ cursor:pointer
+}
+
+@keyframes bounce{
+ 50%{transform:translateY(-14px) rotate(4deg)}
+}
+
+.hidden{
+ display:none!important
+}
+
+.message{
+ animation:appear .5s
+}
+
+@keyframes appear{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+
+/* ================= STORY ================= */
+
+.story{
+ display:none;
+ width:min(92vw,760px);
+ max-height:calc(100dvh - 155px);
+ overflow:hidden
+}
+
+.story.active{
+ display:block
+}
+
+.story p{
+ font-size:clamp(13px,3.5vw,18px);
+ line-height:1.42
+}
+
+
+/* ================= GALLERY ================= */
+
+.gallerySlide{
+ width:100%;
+ height:100%;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ text-align:center
+}
+
+.gallerySlide.active{
+ display:flex
+}
+
+.galleryTitle{
+ width:min(94vw,800px);
+ font-size:clamp(27px,7vw,42px);
+ color:#fff;
+ margin:0 0 18px
+}
+
+.photoCard{
+ width:min(90vw,600px);
+ max-height:calc(100dvh - 230px);
+ padding:10px 10px 14px;
+ background:white;
+ border-radius:24px;
+ box-shadow:0 15px 45px #0009;
+ color:#593941;
+ overflow:hidden
+}
+
+.photoCard img{
+ width:100%;
+ height:clamp(280px,55vh,560px);
+ object-fit:cover;
+ border-radius:17px;
+ display:block
+}
+
+.photoCaption{
+ font-size:clamp(14px,3.8vw,19px);
+ line-height:1.35;
+ margin:10px 8px 0;
+ font-weight:bold
+}
+
+
+/* ================= QUIZ ================= */
+
+.quizBox{
+ width:min(92vw,650px);
+ max-height:calc(100dvh - 155px);
+ overflow:hidden;
+ padding:20px;
+ border-radius:25px;
+ background:rgba(255,255,255,.07);
+ border:1px solid #ff9ec5
+}
+
+.quizCount{
+ color:#ffb5d0;
+ font-weight:bold;
+ margin-bottom:8px
+}
+
+#question{
+ font-size:clamp(18px,5vw,28px);
+ margin:8px 0 15px
+}
+
+.option{
+ width:100%;
+ margin:5px 0;
+ padding:11px 9px;
+ border:2px solid #e89aba;
+ border-radius:14px;
+ background:rgba(255,255,255,.06);
+ color:white;
+ font-weight:bold;
+ font-size:clamp(12px,3.5vw,17px)
+}
+
+.option:active{
+ background:#e54891
+}
+
+.score{
+ margin-top:10px;
+ font-weight:bold;
+ color:#ffb5d0
+}
+
+
+/* ================= LETTER ================= */
+
+.letter{
+ width:min(92vw,800px);
+ max-height:calc(100dvh - 155px);
+ overflow:hidden;
+ padding:18px 20px;
+ border-radius:25px;
+ background:rgba(255,255,255,.08);
+ border:1px solid rgba(255,190,220,.3)
+}
+
+.letter p{
+ font-size:clamp(9px,2.4vw,16px);
+ line-height:1.34
+}
+
+.heart{
+ font-size:55px;
+ animation:pulse 1.3s infinite
+}
+
+@keyframes pulse{
+ 50%{transform:scale(1.18)}
+}
+
+
+/* ================= MUSIC ================= */
+
+#musicBtn{
+ position:fixed;
+ top:16px;
+ right:15px;
+ width:56px;
+ height:56px;
+ border:0;
+ border-radius:50%;
+ background:#ef77a4;
+ color:white;
+ font-size:22px;
+ z-index:9999;
+ box-shadow:0 8px 25px #0005
+}
+
+
+/* ================= HEART ================= */
+
+.heartFloat{
+ position:fixed;
+ pointer-events:none;
+ z-index:99999;
+ font-size:25px;
+ animation:heartUp 2s linear forwards
+}
+
+@keyframes heartUp{
+ to{
+  transform:translateY(-190px) scale(1.5);
+  opacity:0
+ }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+ .scene{
+  padding:20px 12px 96px
+ }
+
+ .card{
+  padding:20px 15px
+ }
+
+ .galleryTitle{
+  margin-bottom:12px
+ }
+
+ .photoCard{
+  width:91vw;
+  max-height:calc(100dvh - 205px);
+  padding:8px 8px 12px;
+  border-radius:20px
+ }
+
+ .photoCard img{
+  height:clamp(280px,57vh,500px);
+  border-radius:14px
+ }
+
+ .photoCaption{
+  font-size:14px;
+  margin-top:8px
+ }
+
+ .btn{
+  min-height:59px;
+  bottom:18px
+ }
+
+ .story p{
+  font-size:13px;
+  line-height:1.35
+ }
+
+ .story h3{
+  font-size:20px
+ }
+
+ .letter{
+  padding:13px
+ }
+
+ .letter p{
+  font-size:9px;
+  line-height:1.22
+ }
+
+ .quizBox{
+  padding:14px
+ }
+}
+</style>
+</head>
+
+
+<body>
+
+<div id="app">
+
+
+<!-- ================================================= -->
+<!-- OPENING -->
+<!-- ================================================= -->
+
+<section class="scene active" id="opening">
+
+ <div class="card">
+
+  <div class="date">
+   25 SEPTEMBER 🎂
+  </div>
+
+  <h1>
+   Happy Birthday,<br>
+   Sayangku! 💗
+  </h1>
+
+  <p>
+   Sebelum kamu melihat semuanya...
+   ada satu perjalanan kecil yang aku siapkan khusus untuk kamu.
+  </p>
+
+ </div>
+
+ <button class="btn" onclick="go('gift')">
+  Mulai perjalanan kita 💕
+ </button>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- GIFT -->
+<!-- ================================================= -->
+
+<section class="scene" id="gift">
+
+ <div class="card">
+
+  <h2>🎁 Ada hadiah untuk kamu</h2>
+
+  <p>
+   Tapi kamu harus membuka kotaknya dulu.
+  </p>
+
+  <div class="gift" onclick="openGift()">
+   🎁
+  </div>
+
+  <div id="giftMessage" class="message hidden">
+
+   <h2>🥹💗 Surprise!</h2>
+
+   <p>
+    Kalau hadiah ini bisa bicara,
+    mungkin dia akan bilang:
+   </p>
+
+   <p>
+    <strong>
+     "Terima kasih sudah menjadi seseorang
+     yang begitu berarti dalam hidupku."
+    </strong>
+   </p>
+
+   <p>
+    Sekarang lanjut ke halaman berikutnya.
+    Masih banyak yang ingin aku ceritakan.
+   </p>
+
+   <button class="btn" onclick="go('story')">
+    Lanjut 🫶
+   </button>
+
+  </div>
+
+ </div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- STORY -->
+<!-- ================================================= -->
+
+<section class="scene" id="story">
+
+ <div class="story active" id="story1">
+
+  <h2>🫶 Cerita kecil tentang kita</h2>
+
+  <h3>🌱 Awalnya — cuma iseng-iseng</h3>
+
+  <p>
+   Aku replay catatan IG kamu cuma iseng-iseng.
+   Nggak ada niat apa-apa, nggak pernah kepikiran kalau
+   dari hal kecil sesederhana itu, akhirnya ada seseorang
+   bernama <strong>Nella Ramadhani</strong> yang bisa menjadi
+   bagian dari ceritaku.
+  </p>
+
+  <p>
+   Awalnya mungkin cuma satu replay.
+   Kemudian jadi obrolan.
+   Dari obrolan jadi saling mengenal.
+   Dan tanpa sadar, seseorang yang awalnya cuma aku lihat
+   lewat layar, perlahan menjadi seseorang yang punya tempat
+   sendiri di pikiranku.
+  </p>
+
+  <p>
+   Lucu ya...
+   Kadang sesuatu yang kita lakukan
+   <strong>"cuma iseng-iseng"</strong>
+   justru menjadi awal dari sesuatu yang paling kita ingat. 🥹❤️
+  </p>
+
+  <p>
+   Kalau waktu itu aku tahu bahwa satu replay kecil itu
+   akan membawa aku sampai sejauh ini, mungkin aku akan lebih
+   sadar bahwa hari itu ternyata bukan sekadar iseng.
+  </p>
+
+ </div>
+
+
+ <div class="story" id="story2">
+
+  <h2>💬 Makin dekat</h2>
+
+  <h3>ternyata bukan cuma iseng</h3>
+
+  <p>
+   Setelah replay kecil itu, ternyata obrolan kita nggak
+   berhenti di situ.
+   Dari yang awalnya cuma iseng, perlahan aku mulai terbiasa
+   mencari namamu di antara notifikasi.
+  </p>
+
+  <p>
+   Kita mulai ngobrol lebih sering.
+   Kadang bahas hal penting, kadang cuma hal random
+   yang sebenarnya nggak penting-penting amat.
+  </p>
+
+  <p>
+   Tapi anehnya, justru dari obrolan sederhana itu
+   aku mulai merasa nyaman.
+  </p>
+
+  <p>
+   Sampai akhirnya aku sadar...
+   <strong>
+    aku bukan lagi sekadar membalas pesanmu karena iseng.
+    Aku memang mulai menunggu pesan darimu.
+   </strong> 🥹❤️
+  </p>
+
+ </div>
+
+
+ <div class="story" id="story3">
+
+  <h2>📸 Momen-momen kecil</h2>
+
+  <h3>yang ternyata jadi kenangan</h3>
+
+  <p>
+   Setelah semakin dekat, mulai ada banyak hal kecil
+   yang kita lewati.
+  </p>
+
+  <p>
+   Foto-foto, obrolan malam, bercanda, saling cerita,
+   saling ganggu, sampai hal-hal kecil yang mungkin waktu itu
+   terasa biasa saja.
+  </p>
+
+  <p>
+   Tapi sekarang kalau aku mengingatnya lagi,
+   aku baru sadar...
+   <strong>
+    ternyata kebahagiaan memang sering datang
+    dalam bentuk yang sederhana.
+   </strong>
+  </p>
+
+  <p>
+   Bukan selalu tentang sesuatu yang besar.
+   Kadang cuma tentang satu pesan dari kamu.
+   Satu foto.
+   Satu candaan.
+   Atau sekadar tahu bahwa hari itu
+   aku masih bisa ngobrol sama kamu.
+  </p>
+
+  <p>
+   Dan tanpa kita sadari, hal-hal kecil itu perlahan berubah
+   menjadi <strong>kenangan yang aku simpan baik-baik.</strong> 💗
+  </p>
+
+ </div>
+
+
+ <div class="story" id="story4">
+
+  <h2>❤️ Hari ini</h2>
+
+  <h3>dari replay sampai 25 September</h3>
+
+  <p>
+   Lucu kalau mengingat awalnya.
+  </p>
+
+  <p>
+   Semuanya dimulai dari satu replay yang bahkan aku lakukan
+   <strong>cuma iseng-iseng.</strong>
+  </p>
+
+  <p>
+   Tapi sekarang aku sedang membuat halaman kecil ini
+   khusus untuk ulang tahunmu.
+  </p>
+
+  <p>
+   Dari satu replay sampai sejauh ini...
+   ternyata hidup memang punya cara sendiri untuk mempertemukan
+   kita dengan seseorang.
+  </p>
+
+  <p>
+   Dan hari ini, 25 September, aku cuma ingin bilang:
+  </p>
+
+  <p>
+   <strong>
+    aku senang waktu itu aku iseng. 🥹❤️
+   </strong>
+  </p>
+
+ </div>
+
+
+ <div class="story" id="story5">
+
+  <h2>🌅 Besok dan seterusnya</h2>
+
+  <p>
+   Aku nggak tahu cerita kita nantinya akan berjalan
+   sejauh apa.
+  </p>
+
+  <p>
+   Tapi kalau boleh berharap, aku ingin masih ada banyak
+   cerita setelah hari ini.
+  </p>
+
+  <p>
+   Masih ada banyak foto yang belum kita ambil.
+   Banyak tempat yang belum kita datangi.
+   Banyak malam yang belum kita habiskan untuk ngobrol.
+   Dan masih banyak tanggal 25 September yang semoga
+   bisa kita rayakan.
+  </p>
+
+  <p>
+   Karena kalau satu replay iseng saja bisa membawa kita
+   sampai di sini...
+  </p>
+
+  <p>
+   <strong>
+    aku penasaran, sejauh apa cerita kita bisa berjalan
+    kalau kita terus menjalaninya bersama. ❤️
+   </strong>
+  </p>
+
+ </div>
+
+
+ <button class="btn" onclick="nextStory()">
+  LANJUT ❤️
+ </button>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- GALLERY 1 -->
+<!-- ================================================= -->
+
+<section class="scene" id="gallery">
+
+ <div class="gallerySlide active" id="photo1">
+
+  <h2 class="galleryTitle">
+   📸 Momen yang bikin aku tersenyum 💗
+  </h2>
+
+  <div class="photoCard">
+
+   <img src="foto/foto1.jpg">
+
+   <div class="photoCaption">
+    Kamu, yang selalu bikin aku tersenyum
+    meski cuma lewat hal-hal kecil 🤍
+   </div>
+
+  </div>
+
+ </div>
+
+
+<!-- FOTO 2 -->
+
+ <div class="gallerySlide" id="photo2">
+
+  <h2 class="galleryTitle">
+   📸 Sederhana tapi berarti 💕
+  </h2>
+
+  <div class="photoCard">
+
+   <img src="foto/foto2.jpg">
+
+   <div class="photoCaption">
+    Dengan gaya sederhana dan kacamata itu,
+    kamu tetap punya cara sendiri buat terlihat cantik. 💗
+   </div>
+
+  </div>
+
+ </div>
+
+
+<!-- FOTO 3 -->
+
+ <div class="gallerySlide" id="photo3">
+
+  <h2 class="galleryTitle">
+   📸 Tatapan yang aku suka 🌷
+  </h2>
+
+  <div class="photoCard">
+
+   <img src="foto/foto3.jpg">
+
+   <div class="photoCaption">
+    Dari tatapan sederhana seperti ini,
+    aku selalu menemukan alasan untuk berhenti sebentar
+    dan melihat kamu lebih lama. 🥹💕
+   </div>
+
+  </div>
+
+ </div>
+
+
+<!-- FOTO 4 -->
+
+ <div class="gallerySlide" id="photo4">
+
+  <h2 class="galleryTitle">
+   📸 Cantik dengan caramu sendiri 💙
+  </h2>
+
+  <div class="photoCard">
+
+   <img src="foto/foto4.jpg">
+
+   <div class="photoCaption">
+    Kamu tetap cantik dengan penampilanmu yang sederhana.
+    Ada sesuatu dari senyum dan tatapanmu
+    yang selalu bikin aku nyaman. 💗
+   </div>
+
+  </div>
+
+ </div>
+
+
+<!-- FOTO 5 -->
+
+ <div class="gallerySlide" id="photo5">
+
+  <h2 class="galleryTitle">
+   📸 Salah satu favoritku 💗
+  </h2>
+
+  <div class="photoCard">
+
+   <img src="foto/foto5.jpg">
+
+   <div class="photoCaption">
+    Salah satu foto yang selalu berhasil
+    bikin aku senyum sendiri kalau melihatnya. 💕
+   </div>
+
+  </div>
+
+ </div>
+
+
+<!-- FOTO 6 -->
+
+ <div class="gallerySlide" id="photo6">
+
+  <h2 class="galleryTitle">
+   📸 Ekspresi random kamu 😭💗
+  </h2>
+
+  <div class="photoCard">
+
+   <img src="foto/foto6.jpg">
+
+   <div class="photoCaption">
+    Bahkan saat kamu lagi random begini,
+    tetap aja ada sisi kamu yang bikin aku gemas
+    dan pengen ketawa. 😂💕
+   </div>
+
+  </div>
+
+ </div>
+
+
+ <button class="btn" id="galleryNext" onclick="nextPhoto()">
+  Lanjut ke next →
+ </button>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- QUIZ -->
+<!-- ================================================= -->
+
+<section class="scene" id="quiz">
+
+ <h2>🎮 Seberapa kenal kamu sama aku?</h2>
+
+ <div class="quizBox">
+
+  <div class="quizCount" id="quizCount">
+   Pertanyaan 1 dari 8
+  </div>
+
+  <h3 id="question">
+   Pertanyaan
+  </h3>
+
+  <div id="options"></div>
+
+  <div class="score" id="score">
+   Skor: 0
+  </div>
+
+  <p id="quizResult"></p>
+
+ </div>
+
+ <button
+  class="btn hidden"
+  id="quizNext"
+  onclick="go('letter')">
+  Lanjut ke surat 💌
+ </button>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- LETTER -->
+<!-- ================================================= -->
+
+<section class="scene" id="letter">
+
+ <h2>💌 Surat terakhir untuk kamu</h2>
+
+ <div class="letter">
+
+  <p>
+   <b>Happy Birthday, sayangku.</b> 🌹
+  </p>
+
+  <p>
+   Kalau aku diberi kesempatan mengulang hidup,
+   aku tidak ingin mengubah semuanya.
+  </p>
+
+  <p>
+   Aku hanya ingin memastikan bahwa di setiap
+   versi hidupku,
+   <strong>aku tetap bertemu kamu.</strong>
+  </p>
+
+  <p>
+   Terima kasih sudah hadir.
+   Terima kasih untuk tawa,
+   perhatian,
+   cerita random,
+   dan semua hal kecil yang mungkin
+   menurutmu biasa saja.
+  </p>
+
+  <p>
+   Karena buatku,
+   hal-hal kecil itulah yang akhirnya menjadi
+   cerita besar yang paling aku sayang.
+  </p>
+
+  <p>
+   Aku tahu kita tidak selalu sempurna.
+   Kita bisa berbeda pendapat.
+   Kita bisa salah paham.
+   Kadang kita bisa saling membuat kesal.
+  </p>
+
+  <p>
+   Tapi aku belajar bahwa mencintai seseorang
+   bukan hanya tentang memilihnya ketika semuanya
+   mudah.
+  </p>
+
+  <p>
+   <strong>
+    Cinta juga tentang tetap memilih orang yang sama
+    ketika keadaan sedang tidak mudah.
+   </strong>
+  </p>
+
+  <p>
+   Di umurmu yang baru,
+   aku berharap kamu sehat,
+   panjang umur,
+   bahagia,
+   dimudahkan semua urusan,
+   dan satu per satu impianmu tercapai.
+  </p>
+
+  <p>
+   Kalau suatu hari dunia terasa terlalu berat,
+   jangan merasa harus kuat sendirian.
+  </p>
+
+  <p>
+   Semoga kamu selalu ingat:
+   ada seseorang yang ingin mendengarkan,
+   menemani,
+   dan melihatmu tersenyum lagi.
+  </p>
+
+  <p>
+   Aku tidak tahu persis seperti apa masa depan kita.
+  </p>
+
+  <p>
+   Tapi kalau aku boleh meminta satu hal...
+  </p>
+
+  <p>
+   <strong>
+    Aku ingin masih punya banyak tanggal
+    25 September bersama kamu.
+   </strong>
+  </p>
+
+  <p>
+   Selamat ulang tahun,
+   cintaku.
+  </p>
+
+  <p>
+   Terima kasih sudah lahir.
+   <br>
+   Terima kasih sudah menjadi kamu.
+  </p>
+
+  <div class="heart">
+   💗
+  </div>
+
+  <p>
+   <strong>
+    I love you.
+    Today, tomorrow,
+    and every day after that.
+   </strong>
+  </p>
+
+ </div>
+
+ <button class="btn" onclick="go('ending')">
+  LANJUT ❤️
+ </button>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- ENDING -->
+<!-- ================================================= -->
+
+<section class="scene" id="ending">
+
+ <div class="card">
+
+  <h2>❤️ Sampai di akhir</h2>
+
+  <p>
+   Kalau kamu sudah sampai di sini...
+   berarti kamu sudah menyelesaikan perjalanan kecil ini.
+  </p>
+
+  <p>
+   Tapi sebenarnya aku tidak ingin perjalanan kita
+   berakhir di halaman ini.
+  </p>
+
+  <h2>
+   Aku ingin cerita kita terus berjalan. 🌅
+  </h2>
+
+  <p>
+   Selamat ulang tahun, sayangku.
+  </p>
+
+  <p>
+   <strong>
+    25 September 2026
+   </strong>
+  </p>
+
+  <p>
+   💗 🧸 🌷 💌
+  </p>
+
+ </div>
+
+</section>
+
+
+</div>
+
+
+<!-- MUSIC -->
+
+<button id="musicBtn" onclick="toggleMusic()">
+ 🎵
+</button>
+
+<audio id="music" loop preload="auto">
+ <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* ================================================= */
+/* NAVIGASI */
+/* ================================================= */
+
+function go(id){
+
+ document.querySelectorAll(".scene").forEach(function(scene){
+  scene.classList.remove("active");
+ });
+
+ const target=document.getElementById(id);
+
+ if(target){
+  target.classList.add("active");
+ }
+
+}
+
+
+/* ================================================= */
+/* GIFT */
+/* ================================================= */
+
+function openGift(){
+
+ document
+  .getElementById("giftMessage")
+  .classList.remove("hidden");
+
+ hearts(20);
+
+}
+
+
+/* ================================================= */
+/* STORY */
+/* ================================================= */
+
+let storyIndex=1;
+
+function nextStory(){
+
+ if(storyIndex<5){
+
+  document
+   .querySelectorAll(".story")
+   .forEach(function(story){
+    story.classList.remove("active");
+   });
+
+  storyIndex++;
+
+  document
+   .getElementById("story"+storyIndex)
+   .classList.add("active");
+
+ }else{
+
+  go("gallery");
+
+ }
+
+}
+
+
+/* ================================================= */
+/* GALLERY SATU-SATU */
+/* ================================================= */
+
+let photoIndex=1;
+
+function nextPhoto(){
+
+ if(photoIndex<6){
+
+  document
+   .querySelectorAll(".gallerySlide")
+   .forEach(function(photo){
+    photo.classList.remove("active");
+   });
+
+  photoIndex++;
+
+  document
+   .getElementById("photo"+photoIndex)
+   .classList.add("active");
+
+ }else{
+
+  go("quiz");
+
+ }
+
+}
+
+
+/* ================================================= */
+/* QUIZ */
+/* ================================================= */
+
+const questions=[
+
+ {
+  q:"Kalau aku sedang sedih, hal apa yang paling aku butuhkan?",
+  a:[
+   "Didiamkan",
+   "Teman untuk cerita",
+   "Disuruh tidur",
+   "Ditinggal"
+  ],
+  correct:1
+ },
+
+ {
+  q:"Menurutmu, apa yang paling aku suka dari kamu?",
+  a:[
+   "Senyummu",
+   "Caramu memperlakukanku",
+   "Semua tentang kamu",
+   "Jawaban A dan B"
+  ],
+  correct:2
+ },
+
+ {
+  q:"Kalau kita punya waktu seharian bersama, aku paling ingin...",
+  a:[
+   "Jalan-jalan",
+   "Makan bareng",
+   "Ngobrol sampai lupa waktu",
+   "Semua benar"
+  ],
+  correct:3
+ },
+
+ {
+  q:"Kalau aku boleh meminta satu hal untuk kita...",
+  a:[
+   "Selalu bahagia",
+   "Selalu saling memahami",
+   "Tetap bersama",
+   "Semua benar ❤️"
+  ],
+  correct:3
+ },
+
+ {
+  q:"Hal kecil apa yang menurutku bisa jadi kenangan besar?",
+  a:[
+   "Satu pesan",
+   "Satu foto",
+   "Satu candaan",
+   "Semua benar ❤️"
+  ],
+  correct:3
+ },
+
+ {
+  q:"Kalau kita sedang ngobrol, aku paling suka ketika...",
+  a:[
+   "Cuma bahas hal serius",
+   "Bisa cerita hal random",
+   "Tidak saling membalas",
+   "Cepat mengakhiri obrolan"
+  ],
+  correct:1
+ },
+
+ {
+  q:"Apa yang ingin aku lakukan lebih banyak bersamamu?",
+  a:[
+   "Mengumpulkan banyak foto",
+   "Mendatangi tempat baru",
+   "Menghabiskan waktu untuk ngobrol",
+   "Semua benar ❤️"
+  ],
+  correct:3
+ },
+
+ {
+  q:"Kalau tentang hubungan kita, apa yang paling ingin aku pertahankan?",
+  a:[
+   "Saling memilih",
+   "Saling memahami",
+   "Tetap bersama",
+   "Semua benar ❤️"
+  ],
+  correct:3
+ }
+
+];
+
+
+let current=0;
+let score=0;
+
+
+function showQuestion(){
+
+ if(current>=questions.length){
+
+  document.getElementById("quizCount").innerText=
+   "🎉 Kuis selesai!";
+
+  document.getElementById("question").innerText=
+   "Seberapa kenal kamu sama aku? 💗";
+
+  document.getElementById("options").innerHTML="";
+
+  document.getElementById("score").innerText=
+   "Skor: "+score+"/"+questions.length;
+
+  document.getElementById("quizResult").innerHTML=
+   score===questions.length
+   ?
+   "🥹 Kamu benar-benar tahu aku! ❤️"
+   :
+   "💗 Yang penting kamu tetap orang favoritku.";
+
+  document
+   .getElementById("quizNext")
+   .classList.remove("hidden");
+
+  hearts(25);
+
+  return;
+ }
+
+
+ const q=questions[current];
+
+ document.getElementById("quizCount").innerText=
+  "Pertanyaan "+(current+1)+" dari "+questions.length;
+
+ document.getElementById("question").innerText=
+  q.q;
+
+ const options=
+  document.getElementById("options");
+
+ options.innerHTML="";
+
+
+ q.a.forEach(function(answer,index){
+
+  const button=
+   document.createElement("button");
+
+  button.className="option";
+  button.innerText=answer;
+
+  button.onclick=function(){
+   answerQuestion(index);
+  };
+
+  options.appendChild(button);
+
+ });
+
+}
+
+
+function answerQuestion(index){
+
+ const q=questions[current];
+
+ document
+  .querySelectorAll(".option")
+  .forEach(function(button){
+   button.disabled=true;
+  });
+
+ if(index===q.correct){
+
+  score++;
+  hearts(8);
+
+ }
+
+ document.getElementById("score").innerText=
+  "Skor: "+score;
+
+ current++;
+
+ setTimeout(showQuestion,400);
+
+}
+
+
+/* ================================================= */
+/* MUSIC */
+/* ================================================= */
+
+let playing=false;
+
+function toggleMusic(){
+
+ const music=
+  document.getElementById("music");
+
+ const button=
+  document.getElementById("musicBtn");
+
+ if(!playing){
+
+  music.play().then(function(){
+
+   playing=true;
+   button.innerText="🔊";
+
+  }).catch(function(){
+
+   alert("Tekan tombol musik lagi.");
+
+  });
+
+ }else{
+
+  music.pause();
+
+  playing=false;
+
+  button.innerText="🎵";
+
+ }
+
+}
+
+
+/* ================================================= */
+/* HEART */
+/* ================================================= */
+
+function hearts(amount){
+
+ for(let i=0;i<amount;i++){
+
+  setTimeout(function(){
+
+   const h=
+    document.createElement("div");
+
+   h.className="heartFloat";
+
+   h.innerText=
+    ["💗","💕","💖","❤️","💘"]
+    [Math.floor(Math.random()*5)];
+
+   h.style.left=
+    Math.random()*100+"vw";
+
+   h.style.top=
+    (70+Math.random()*20)+"vh";
+
+   document.body.appendChild(h);
+
+   setTimeout(function(){
+    h.remove();
+   },2000);
+
+  },i*55);
+
+ }
+
+}
+
+
+/* ================================================= */
+/* START */
+/* ================================================= */
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
